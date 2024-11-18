@@ -1,98 +1,123 @@
 package com.campusdual.classroom;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public abstract class Merchandise {
 
-	protected String name;
-	protected String uniqueId;
-	protected String responsibleId;
-	protected int zone;
-	protected String area;
-	protected String shelf;
-	protected int quantity;
+  protected String name;
+  protected String uniqueId;
+  protected String responsibleId;
+  protected int zone;
+  protected String area;
+  protected String shelf;
+  protected int quantity;
+  protected Date expirationDate;
 
-	public Merchandise(String name, String uniqueId, String responsibleId) {
-		this.name = name;
-		this.uniqueId = uniqueId;
-		this.responsibleId = responsibleId;
-	}
+  public Merchandise(String name, String uniqueId, String responsibleId) {
+    this.name = name;
+    this.uniqueId = uniqueId;
+    this.responsibleId = responsibleId;
+  }
 
-	public Merchandise(String name, String uniqueId, String responsibleId, int zone, String area, String shelf,
-			int quantity) {
-		this.name = name;
-		this.uniqueId = uniqueId;
-		this.responsibleId = responsibleId;
-		this.zone = zone;
-		this.area = area;
-		this.shelf = shelf;
-		this.quantity = quantity;
-	}
+  public Merchandise(String name, String uniqueId, String responsibleId, int zone, String area, String shelf,
+                     int quantity) {
+    this.name = name;
+    this.uniqueId = uniqueId;
+    this.responsibleId = responsibleId;
+    this.zone = zone;
+    this.area = area;
+    this.shelf = shelf;
+    this.quantity = quantity;
+  }
 
-	public String getLocation() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Z - ");
-		builder.append(getZone());
-		builder.append(" A - ");
-		builder.append(getArea());
-		builder.append(" E - ");
-		builder.append(getShelf());
-		return builder.toString();
-	}
+  public Merchandise(String name, String uniqueId, String responsibleId, int zone, String area, String shelf,
+                     int quantity, Date expirationDate) {
+    this.name = name;
+    this.uniqueId = uniqueId;
+    this.responsibleId = responsibleId;
+    this.zone = zone;
+    this.area = area;
+    this.shelf = shelf;
+    this.quantity = quantity;
+    this.expirationDate = expirationDate;
+  }
 
-	public abstract Object getSpecificData();
+  public String getLocation() {
+    StringBuilder builder = new StringBuilder();
+    builder.append("Z - ");
+    builder.append(getZone());
+    builder.append(" A - ");
+    builder.append(getArea());
+    builder.append(" E - ");
+    builder.append(getShelf());
+    return builder.toString();
+  }
 
-	public String getName() {
-		return name;
-	}
+  public abstract Object getSpecificData();
 
-	public void setName(String name) {
-		this.name = name;
-	}
+  public String getName() {
+    return name;
+  }
 
-	public String getUniqueId() {
-		return uniqueId;
-	}
+  public void setName(String name) {
+    this.name = name;
+  }
 
-	public void setUniqueId(String uniqueId) {
-		this.uniqueId = uniqueId;
-	}
+  public String getUniqueId() {
+    return uniqueId;
+  }
 
-	public String getResponsibleId() {
-		return responsibleId;
-	}
+  public void setUniqueId(String uniqueId) {
+    this.uniqueId = uniqueId;
+  }
 
-	public void setResponsibleId(String responsibleId) {
-		this.responsibleId = responsibleId;
-	}
+  public String getResponsibleId() {
+    return responsibleId;
+  }
 
-	public int getZone() {
-		return zone;
-	}
+  public void setResponsibleId(String responsibleId) {
+    this.responsibleId = responsibleId;
+  }
 
-	public void setZone(int zone) {
-		this.zone = zone;
-	}
+  public int getZone() {
+    return zone;
+  }
 
-	public String getArea() {
-		return area;
-	}
+  public void setZone(int zone) {
+    this.zone = zone;
+  }
 
-	public void setArea(String area) {
-		this.area = area;
-	}
+  public String getArea() {
+    return area;
+  }
 
-	public String getShelf() {
-		return shelf;
-	}
+  public void setArea(String area) {
+    this.area = area;
+  }
 
-	public void setShelf(String shelf) {
-		this.shelf = shelf;
-	}
+  public String getShelf() {
+    return shelf;
+  }
 
-	public int getQuantity() {
-		return quantity;
-	}
+  public void setShelf(String shelf) {
+    this.shelf = shelf;
+  }
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
+  public int getQuantity() {
+    return quantity;
+  }
+
+  public void setQuantity(int quantity) {
+    this.quantity = quantity;
+  }
+
+  public String getFormattedDate(Date expirationDate) {
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    return (dateFormat.format(getExpirationDate()));
+  }
+
+  public Date getExpirationDate() {
+    return expirationDate;
+  }
 }
